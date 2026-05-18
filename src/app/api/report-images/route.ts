@@ -14,7 +14,7 @@ export async function GET(request: Request) {
     process.cwd(),
     "public",
     user === "carlos" ? "Carlos AR" : "Kurth AR",
-    "PIctures for AR"
+    user === "carlos" ? "Pictures for AR" : "PIctures for AR"
   );
 
   const groupedImages = milestones.reduce<Record<string, string[]>>((accumulator, milestone) => {
@@ -43,7 +43,11 @@ export async function GET(request: Request) {
     }
 
     groupedImages[matchedPhase].push(
-      encodeURI(`/${user === "carlos" ? "Carlos AR" : "Kurth AR"}/PIctures for AR/${fileName}`)
+      encodeURI(
+        `/${user === "carlos" ? "Carlos AR" : "Kurth AR"}/${
+          user === "carlos" ? "Pictures for AR" : "PIctures for AR"
+        }/${fileName}`
+      )
     );
   }
 
